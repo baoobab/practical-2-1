@@ -352,15 +352,45 @@ int main() {
         break;
       }
       case 6: {
-        
+        int maleCount = 0;
+        int femaleCount = 0;
+        for (int i = 0; i < studentsCount; i++) {
+          if (students[i].gender == 'M') maleCount++;
+          if (students[i].gender == 'W') femaleCount++;
+        }
+        cout << "\nNumber of male students: " << maleCount;
+        cout << "\nNumber of female students: " << femaleCount;
         break;
       }
       case 7:{
-        
+        cout << "\nStudents who do not receive a scholarship:\n";
+        Sleep(800);
+        for (int i = 0; i < studentsCount; i++) {
+          if (students[i].avgScore < 4) showStudent(students[i]), Sleep(500);
+        }
+        cout << "\nStudents who study at 4:\n";
+        Sleep(800);
+        for (int i = 0; i < studentsCount; i++) {
+          if (students[i].avgScore >= 4) showStudent(students[i]), Sleep(500);
+        }
+        cout << "\nSuper best students krasavchiki:\n";
+        Sleep(800);
+        for (int i = 0; i < studentsCount; i++) {
+          if (students[i].avgScore == 5) showStudent(students[i]), Sleep(500);
+        }
         break;
       }
       case 8: {
-        
+        int groupListNumber;
+        cout << "\n" << "Enter a group list number: ";
+        cin >> groupListNumber;
+        if (!cin.good()) {
+          cout << "\n" << "You entered an incorrect value";
+          break;
+        }
+        for (int i = 0; i < studentsCount; i++) {
+          if (students[i].groupListNumber == groupListNumber) showStudent(students[i]);
+        }
         break;
       }
       default: {
