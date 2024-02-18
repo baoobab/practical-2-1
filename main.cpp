@@ -371,7 +371,7 @@ int main() {
         cout << "\nStudents who study at 4:\n";
         Sleep(800);
         for (int i = 0; i < studentsCount; i++) {
-          if (students[i].avgScore >= 4) showStudent(students[i]), Sleep(500);
+          if (students[i].avgScore >= 4 && students[i].avgScore < 5) showStudent(students[i]), Sleep(500);
         }
         cout << "\nSuper best students krasavchiki:\n";
         Sleep(800);
