@@ -291,11 +291,40 @@ int main() {
     switch (workPoint)
     {   
       case 1: {
-        
+        if (newStudentsCount < 1 || aviablePlaces < 1) {
+          cout << "\nNo places for new students(\n";
+          break;
+        }
+        students[studentsCount - aviablePlaces] = createStudent();
+        showStudent(students[studentsCount - aviablePlaces]);
+        aviablePlaces--;
         break;
       }
       case 2: {
-        
+        unsigned int id;
+        cout << "\nEnter student ID: ";
+        cin >> id;
+        int idx = getIndexOfStudent(id, students, studentsCount);
+        if (idx != -1) {
+          showStudent(students[idx]);
+          short unsigned int fieldType;
+          cout << "\n" << "Enter field type (1-name;2-gender;3-groupNumber;4-groupListNumber;5-grades): ";
+          cin >> fieldType;
+          if (!cin.good()) {
+            cout << "\nYou entered an incorrect value";
+            break;
+          }
+          updateStudent(&students[idx], fieldType);
+          cout << "\nModified student\n";
+          showStudent(students[idx]);
+
+          clearStudentsFile();
+          for (int i = 0; i < studentsCount; i++) {
+            writeData(students[i]);
+          }
+        } else {
+          cout << "\nNo such students found";
+        }
         break;
       }
       case 3: {
