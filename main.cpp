@@ -328,15 +328,27 @@ int main() {
         break;
       }
       case 3: {
-        
+        for (int i = 0; i < studentsCount; i++) {
+          showStudent(students[i]);
+        }
         break;
       }
       case 4: {
-        
+        int groupNumber;
+        cout << "\n" << "Enter group number: ";
+        cin >> groupNumber;
+        if (!cin.good()) {
+          cout << "\n" << "You entered an incorrect value";
+          break;
+        }
+        for (int i = 0; i < studentsCount; i++) {
+          if (students[i].groupNumber == groupNumber) showStudent(students[i]);
+        }
         break;
       }
       case 5: {
-        
+        cout << "\nStudents TOP\n";
+        showSortedStudents(students, studentsCount);
         break;
       }
       case 6: {
